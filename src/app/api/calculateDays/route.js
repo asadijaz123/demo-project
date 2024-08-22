@@ -16,12 +16,15 @@ export async function GET(request) {
   const end = new Date(endDate);
 
   if (isNaN(start) || isNaN(end)) {
-    return NextResponse.json({ error: "Invalid date format" }, { status: 400 });
+    return NextResponse.json(
+      { success: false, error: "Invalid date format" },
+      { status: 400 }
+    );
   }
 
   if (end <= start) {
     return NextResponse.json(
-      { error: "End date must be after start date" },
+      { success: false, error: "End date must be after start date" },
       { status: 400 }
     );
   }
@@ -29,5 +32,5 @@ export async function GET(request) {
   const diffTime = Math.abs(end - start);
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) - 1;
 
-  return NextResponse.json({ days: diffDays });
+  return NextResponse.json({ success: true, days: diffDays });
 }
