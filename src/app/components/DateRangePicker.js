@@ -41,7 +41,7 @@ export default function DateRangePicker() {
   };
 
   return (
-    <div className="p-6 min-w-[400px]   mx-auto bg-white shadow-md rounded-lg">
+    <div className="p-6 min-w-[300px] sm:min-w-[400px] mx-auto bg-white shadow-md rounded-lg">
       <h2 className="text-2xl font-semibold mb-4 text-black">
         Date Range Picker
       </h2>
@@ -77,18 +77,21 @@ export default function DateRangePicker() {
         />
       </div>
 
-      <button
-        onClick={calculateDays}
-        className="block w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 mb-2"
-      >
-        Calculate Days
-      </button>
-      <button
-        onClick={clearDates}
-        className="block w-full bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
-      >
-        Clear Dates
-      </button>
+      <div className="flex flex-col sm:flex-row gap-2">
+        <button
+          onClick={calculateDays}
+          className="w-full sm:w-auto bg-blue-500 text-white py-2 rounded hover:bg-blue-600 mb-2 sm:mb-0"
+        >
+          Calculate Days
+        </button>
+        <button
+          onClick={clearDates}
+          className="w-full sm:w-auto bg-gray-500 text-white py-2 rounded hover:bg-gray-600"
+        >
+          Clear Dates
+        </button>
+      </div>
+
       {error && <p className="text-red-500 mt-4">{error}</p>}
       {days !== null && (
         <p className="text-green-500 mt-4">Number of days: {days}</p>
